@@ -2,7 +2,7 @@
 
 # 快速使用
 ### 第一步，引入 msg.js 
-<script src="./msg.js"></script>
+<script src="https://res.weiunity.com/msg/msg.js"></script>
 ### 第二步，一行代码使用
 ````
 msg.info('Hello Msg')
@@ -29,3 +29,7 @@ msg.close();
 ````
 主要用来配合 msg.loading(); 来使用，关闭加载中的提示。
 其他的 msg.info()、 msg.success()、 msg.failure() 这些也可以用此来进行关闭，只不过实际使用时，没什么必要
+
+
+# 写在后面
+做了不少项目，其中有些里面，只需要一个加载中、一个好看的提示信息就可以的，但是需要实现，要引入jquery、引入layui、或者引入。。。。本来只是很简单的目的，却向项目中引入了这么多东西。另外负责项目的同事一看，好吧，这么一大坨，干啥的，引入了这么多，这么复杂，更改时是不是更要小心点了
