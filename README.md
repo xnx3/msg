@@ -19,6 +19,6 @@
 
 > msg.loading('加载中')
 
-![](http://res.weiunity.com/msg/images/info.png)
+![](http://res.weiunity.com/msg/images/loading.gif)
 
 > msg.close()
