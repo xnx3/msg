@@ -1,6 +1,3 @@
-# msg
-加载中、成功提示、失败提示等。Loading, success prompt, failure prompt, etc
-
 ![](https://res.weiunity.com/msg/images/all.png)
 
 # 快速使用
@@ -8,14 +5,13 @@
 <script src="./msg.js"></script>
 ### 第二步，一行代码使用
 1. msg.info('Hello Msg')
+
 信息提示，2.5秒后自动关闭
 
 1. msg.success('操作成功')
-
 成功提示，1.5秒后自动关闭
 
 1. msg.failure('操作失败');
-
 失败提示，2.5秒后自动关闭
 
 1. msg.loading('加载中');
