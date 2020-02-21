@@ -1,6 +1,10 @@
 /**
- * 消息提醒
- * @author 管雷鸣
+ * 信息提醒，不依赖任何乱七八糟框架及其他文件，导入 msg.js ，msg.info('哈哈哈') 一句代码使用！
+ * 作者：管雷鸣
+ * 个人网站：www.guanleiming.com
+ * 个人微信: xnx3com
+ * 公司：潍坊雷鸣云网络科技有限公司
+ * 公司官网：www.leimingyun.com
  */
 var msg = {
 	/**
