@@ -25,6 +25,31 @@
 	<div>2. 一句话调用： 
 		<br/>msg.info('Hello Msg');
 	</div>
+	<style>
+		#shili>div{float:left;}
+		#shili>div>div{font-size:13px; text-align:center;}
+		img{width:160px;}
+	</style>
+	<div id="shili">
+		<div>
+			<img src="https://res.weiunity.com/msg/images/info.png" />
+			<div>msg.info('Hello Msg');</div>
+		</div>
+		<div>
+			<img src="https://res.weiunity.com/msg/images/success.png" />
+			<div>msg.success('操作成功');</div>
+		</div>
+		<div>
+			<img src="https://res.weiunity.com/msg/images/failure.png" />
+			<div>msg.failure('操作失败');</div>
+		</div>
+		<div>
+			<img src="https://res.weiunity.com/msg/images/loading.gif" />
+			<div>msg.loading('加载中');</div>
+			<div>msg.close();  //关闭</div>
+		</div>
+	</div>
+	<div style="clear: both;"></div>	
 </div>
 <div style="padding-top:50px; font-size:13px;color:gray;">
 	信息提醒，不依赖任何乱七八糟框架及其他文件，导入 msg.js ，msg.info('Hello msg') 一句代码使用！
