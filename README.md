@@ -11,9 +11,11 @@
 信息提示，2.5秒后自动关闭
 
 1. msg.success('操作成功')
+
 成功提示，1.5秒后自动关闭
 
 1. msg.failure('操作失败');
+
 失败提示，2.5秒后自动关闭
 
 1. msg.loading('加载中');
@@ -22,15 +24,3 @@
 1. msg.close();
 主要用来配合 msg.loading(); 来使用，关闭加载中的提示。
 其他的 msg.info()、 msg.success()、 msg.failure() 这些也可以用此来进行关闭，只不过实际使用时，没什么必要
-
-![](http://res.weiunity.com/msg/images/success.png)
-
-> msg.failure('操作失败')
-
-![](http://res.weiunity.com/msg/images/failure.png)
-
-> msg.loading('加载中')
-
-![](http://res.weiunity.com/msg/images/loading.gif)
-
-> msg.close()
