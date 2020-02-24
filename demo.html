@@ -9,13 +9,18 @@
 </head>
 <body>
 
-<h3>快速体验</h3>
+<h2>快速体验</h2>
+<h4>弹出提示</h4>
 <button onclick="msg.info('Hello Msg');">提示信息</button>
 <button onclick="msg.success('操作成功');">成功提示</button>
 <button onclick="msg.failure('操作失败');">失败提示</button>
-<br/>
+<h4>加载中 提示</h4>
 <button onclick="msg.loading('加载中');">加载中提示</button>
 <button onclick="msg.close();">关闭提示</button>
+<h4>弹出提示，提示消失时执行其他命令</h4>
+<button onclick="msg.info('Hello Msg', function(){ alert(1); });">提示信息，消失时弹出alert</button>
+<button onclick="msg.success('操作成功', function(){ alert(1); });">成功提示，消失时弹出alert</button>
+<button onclick="msg.failure('操作失败', function(){ alert(1); });">失败提示，消失时弹出alert</button>
 
 <div style="padding-top:50px;">
 	<h3>快速使用</h3>
