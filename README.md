@@ -1,5 +1,8 @@
 ![](https://res.weiunity.com/msg/images/all.png)
 
+## 快速体验
+http://res.weiunity.com/msg/demo.html
+
 # 快速使用
 ### 第一步，引入 msg.js 
 <script src="https://res.weiunity.com/msg/msg.js"></script>
