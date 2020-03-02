@@ -83,7 +83,7 @@ var msg = {
 		if(document.getElementsByTagName("body") != null && document.getElementsByTagName("body").length > 0){
 			var div=document.createElement("div");
 			div.id = 'wangmarket_loading';
-			div.style = 'position: fixed;z-index: 999999;margin: 0 auto;text-align: center;width: 100%;';
+			div.style = 'position: fixed;z-index: 2147483647;margin: 0 auto;text-align: center;width: 100%;';
 			div.innerHTML = ''
 				+'<div id="loading" style="position: fixed;top: 30%;text-align: center;font-size: 1rem;color: #dedede;margin: 0px auto;left: 50%;margin-left: -3.5rem;">'
 				+'<div style="width: 7rem;background-color: #2e2d3c;border-radius: 0.3rem;">'
