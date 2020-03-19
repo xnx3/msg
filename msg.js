@@ -88,7 +88,7 @@ var msg = {
 				+'<div id="loading" style="position: fixed;top: 30%;text-align: center;font-size: 1rem;color: #dedede;margin: 0px auto;left: 50%;margin-left: -3.5rem;">'
 				+'<div style="width: 7rem;background-color: #2e2d3c;border-radius: 0.3rem;">'
 				+img
-				+'<div style="width: 100%;line-height: 1rem;padding-bottom: 1.4rem; font-size: 1.1rem; padding-left: 0.3rem;padding-right: 0.3rem; box-sizing: border-box;line-height: 1.2rem;">'+text+'</div>'
+				+'<div style="width: 100%;line-height: 1rem;padding-bottom: 1.4rem; font-size: 1.1rem; padding-left: 0.3rem;padding-right: 0.3rem; box-sizing: border-box;line-height: 1.2rem;color: white;">'+text+'</div>'
 				+'</div>';
 				+'</div>';
 			document.getElementsByTagName("body")[0].appendChild(div);
