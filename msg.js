@@ -86,7 +86,7 @@ var msg = {
 			div.style = 'position: fixed;z-index: 2147483647;margin: 0 auto;text-align: center;width: 100%;';
 			div.innerHTML = ''
 				+'<div id="loading" style="position: fixed;top: 30%;text-align: center;font-size: 1rem;color: #dedede;margin: 0px auto;left: 50%;margin-left: -3.5rem;">'
-				+'<div style="width: 7rem;background-color: #2e2d3c;border-radius: 0.3rem;">'
+				+'<div style="width: 7rem;background-color: #2e2d3c;border-radius: 0.3rem; filter: alpha(Opacity=80); -moz-opacity: 0.8; opacity: 0.8;">'
 				+img
 				+'<div style="width: 100%;line-height: 1rem;padding-bottom: 1.4rem; font-size: 1.1rem; padding-left: 0.3rem;padding-right: 0.3rem; box-sizing: border-box;line-height: 1.2rem;color: white;">'+text+'</div>'
 				+'</div>';
