@@ -118,10 +118,12 @@ var msg = {
 				+'<div id="loading" style="position: fixed;top: 30%;text-align: center;font-size: 1rem;color: #dedede;margin: 0px auto;left: 50%;margin-left: -'+(wangmarket_loading_hengxiang? '9':'3.5')+'rem;">'
 				+'<div style="width: 7rem;background-color: #2e2d3c;border-radius: 0.3rem; filter: alpha(Opacity=80); -moz-opacity: 0.8; opacity: 0.8; min-height: 4.8rem;'+(wangmarket_loading_hengxiang? 'width: 18rem;':'')+'">'
 				+'<div'+(wangmarket_loading_hengxiang? ' style="float:left;height: 20rem; margin-top: -0.6rem; position: fixed;"':'')+'>'+img+'</div>'
-				+'<div style="width: 100%;padding-bottom: 1.4rem; font-size: 1.1rem; padding-left: 0.3rem;padding-right: 0.3rem; box-sizing: border-box;line-height: 1.2rem;color: white;'+(wangmarket_loading_hengxiang? 'padding: 1rem; text-align: left; padding-right: 0.3rem; line-height: 1.5rem;':'')+'">'+text+'</div>'
+				+'<div style="width: 100%;padding-bottom: 1.4rem; font-size: 1.1rem; padding-left: 0.3rem;padding-right: 0.3rem; box-sizing: border-box;line-height: 1.2rem;color: white;'+(wangmarket_loading_hengxiang? 'padding: 1rem; text-align: left; padding-right: 0.3rem; line-height: 1.5rem;margin-left: 4.8rem; padding-right: 5.5rem; padding-top: 0.7rem;':'')+'">'+text+'</div>'
 				+'</div>';
 				+'</div>';
 			document.getElementsByTagName("body")[0].appendChild(div);
+		}else{
+			alert('提示，body中没有子元素，无法显示 msg.js 的提示');
 		}
 	},
 	/**
@@ -203,7 +205,10 @@ var msg = {
 						'</div>';
 		
 		//<div style="width: 100%;padding-bottom: 1rem;font-size: 1.1rem;padding-left: 0.3rem;padding-right: 2.0rem;box-sizing: border-box;line-height: 1.2rem;color: white;text-align: right;"> <button style=" border: aliceblue; padding: 0.4rem; padding-left: 1rem; padding-right: 1rem; font-size: 0.8rem; background-color: darkcyan; " onclick="close1();">确定</button> </div>
-		
-		document.getElementsByTagName("body")[0].appendChild(div);
+		if(document.getElementsByTagName("body") != null && document.getElementsByTagName("body").length > 0){
+			document.getElementsByTagName("body")[0].appendChild(div);
+		}else{
+			alert('提示，body中没有子元素，无法显示 msg.js 的提示');
+		}
 	}
 }
