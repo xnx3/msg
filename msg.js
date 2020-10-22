@@ -134,8 +134,8 @@ var msg = {
 	 * 				text:'弹窗的内容',	//弹出窗显示的内容，支持html
 	 *				top:'30%',			//弹出层距离顶部的距离，不传默认是30%。 可以传入如 30%、 5rem、 10px 等
 	 *				left:'5%',			//弹出层距离浏览器左侧的距离，不传默认是5%
-	 *				height:'100px',		//弹出层显示的高度。不传默认是 auto 
-	 *				width:'90%',		//弹出层显示的宽度。不传默认是 90%
+	 *				height:'100px',		//弹出层显示的高度。不传默认是 auto。 传入如 100px 、 10rem 等。不能使用%百分比。
+	 *				width:'90%',		//弹出层显示的宽度。不传默认是 90%。传入如 100px 、 10rem 、 50% 等。
 	 *				bottom:'1rem',		//弹出层距离底部的距离。不传默认是 auto 。 height 跟 bottom 如果这两个同时设置了，那么height生效，bottom是不生效的
 	 *				close:false			//是否显示右上角的关闭按钮，不传默认是true，显示关闭按钮
 	 *				background:'#2e2d3c'	//背景颜色。十六进制颜色编码。不传默认是 '#2e2d3c'
@@ -196,7 +196,7 @@ var msg = {
 		div.innerHTML = '<div style="position: fixed; top:'+attribute.top+'; bottom:'+attribute.bottom+'; text-align: center;font-size: 1rem;color: #dedede;margin: 0px auto;width: '+attribute.width+';left: '+attribute.left+'; height: '+attribute.height+';">'+
 							'<div style="padding:0.5rem">'+
 								'<div style="width: 100%;background-color: '+attribute.background+';border-radius: 0.3rem;filter: alpha(Opacity='+attribute.opacity+');-moz-opacity: '+(attribute.opacity/100)+';opacity: '+(attribute.opacity/100)+';min-height: 4.8rem; height: 100%;">'+
-									'<div style=" width: 100%; font-size: 1.1rem; box-sizing: border-box; line-height: 1.6rem; color: white; text-align: left; padding: 1rem; overflow-y: auto; height: 100%;">'+
+									'<div style=" width: 100%; font-size: 1.1rem; box-sizing: border-box; line-height: 1.6rem; color: white; text-align: left; padding: 1rem; overflow-y: auto; height: '+attribute.height+';">'+
 									attribute.text+
 									'</div>'+
 									(attribute.close? '<div style="top: 0px;position: absolute;right: 0px;background-color: aliceblue;border-radius: 50%;height: 2rem;width: 2rem;" onclick="msg.close();"><svg style="width: 2rem; height:2rem; cursor: pointer;" t="1601801323865" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4482" width="48" height="48"><path d="M512.001 15.678C237.414 15.678 14.82 238.273 14.82 512.86S237.414 1010.04 512 1010.04s497.18-222.593 497.18-497.18S786.589 15.678 512.002 15.678z m213.211 645.937c17.798 17.803 17.798 46.657 0 64.456-17.798 17.797-46.658 17.797-64.456 0L512.001 577.315 363.241 726.07c-17.799 17.797-46.652 17.797-64.45 0-17.804-17.799-17.804-46.653 0-64.456L447.545 512.86 298.79 364.104c-17.803-17.798-17.803-46.657 0-64.455 17.799-17.798 46.652-17.798 64.45 0l148.761 148.755 148.755-148.755c17.798-17.798 46.658-17.798 64.456 0 17.798 17.798 17.798 46.657 0 64.455L576.456 512.86l148.756 148.755z m0 0" fill="'+attribute.background+'" p-id="4483"></path></svg></div>':'')+
