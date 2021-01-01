@@ -49,7 +49,7 @@ msg.popups('我是弹出窗口，可以传入文字、也可以传入html');
 
 //自定义弹出框。自定义，传入了一个自定义属性，内容文本也算是其中的一个属性。改弹出层自动会居中显示。
 msg.popups({
-	text:'弹窗的内容',	//弹出窗显示的内容，支持html
+	text:'Hallo，是管雷鸣创造了我！<br/>个人介绍：<a href="http://www.guanleiming.com" style="color:white;" target="_black">www.guanleiming.com</a>',	//弹出窗显示的内容，支持html
 	height:'100px',		//弹出层显示的高度。不传默认是 auto。 传入如 100px 、 10rem 、 10% 等 
 	width:'90%',		//弹出层显示的宽度。不传默认是 90%。 传入如 100px 、 10rem 、 10% 等
 	close:true,			//是否显示右上角的关闭按钮，不传默认是true，显示关闭按钮
