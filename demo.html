@@ -27,6 +27,14 @@
 <h4>弹出框</h4>
 <button onclick="msg.popups('hello，我是弹出窗口');">普通弹出框</button>
 <button onclick="msg.popups({text:'hello，我是弹出窗口，我没有关闭按钮，你要执行 <pre>msg.close();</pre> 来关闭我',close:false});">没有关闭按钮的弹出框</button>
+<button onclick="msg.popups({
+		text:'hello，我是弹出窗口，我没有关闭按钮，你要执行 <pre>msg.close();</pre> 来关闭我hello，我是弹出窗口，我没有关闭按钮，你要执行 <pre>msg.close();</pre> 来关闭我hello，我是弹出窗口，我没有关闭按钮，你要执行 <pre>msg.close();</pre> 来关闭我hello，我是弹出窗口，我没有关闭按钮，你要执行 <pre>msg.close();</pre> 来关闭我hello，我是弹出窗口，我没有关闭按钮，你要执行 <pre>msg.close();</pre> 来关闭我hello，我是弹出窗口，我没有关闭按钮，你要执行 <pre>msg.close();</pre> 来关闭我',
+		close:true,
+		top:'100px',
+		left:'100px',
+		width:'40%',
+		height:'10%'
+	});">没有关闭按钮的弹出框</button>
 
 
 <div style="padding-top:50px;">
@@ -84,9 +92,9 @@ msg.popups({
 	left:'5%',			//弹出层距离浏览器左侧的距离，不传默认是5%
 	bottom:'1rem',		//弹出层距离底部的距离。不传默认是 auto 。 height 跟 bottom 如果这两个同时设置了，那么height生效，bottom是不生效的
 	width:'90%',		//弹出层显示的宽度。不传默认是 90%
-	height:100px'',		//弹出层显示的高度。不传默认是 auto
-	close:false			//是否显示右上角的关闭按钮，不传默认是true，显示关闭按钮
-	background:'#2e2d3c'	//背景颜色。十六进制颜色编码。不传默认是 '#2e2d3c'
+	height:'100px',		//弹出层显示的高度。不传默认是 auto
+	close:false,			//是否显示右上角的关闭按钮，不传默认是true，显示关闭按钮
+	background:'#2e2d3c',	//背景颜色。十六进制颜色编码。不传默认是 '#2e2d3c'
 	opacity:92			//弹出层的透明度，默认是92, 取值0~100，0是不透明，100是全部透明
 });
 		</pre>

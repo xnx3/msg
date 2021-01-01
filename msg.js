@@ -8,6 +8,10 @@
  */
 var msg = {
 	/*
+	 * 当前msg的版本
+	 */
+	version:1.2,
+	/*
 	 * 错误的图
 	 */
 	errorIcon:'<svg style="width: 3rem;padding: 1.5rem; padding-bottom: 1.1rem; box-sizing: content-box;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6977"><path d="M696.832 326.656c-12.8-12.8-33.28-12.8-46.08 0L512 465.92 373.248 327.168c-12.8-12.8-33.28-12.8-46.08 0s-12.8 33.28 0 46.08L466.432 512l-139.264 139.264c-12.8 12.8-12.8 33.28 0 46.08s33.28 12.8 46.08 0L512 558.08l138.752 139.264c12.288 12.8 32.768 12.8 45.568 0.512l0.512-0.512c12.8-12.8 12.8-33.28 0-45.568L557.568 512l139.264-139.264c12.8-12.8 12.8-33.28 0-46.08 0 0.512 0 0 0 0zM512 51.2c-254.464 0-460.8 206.336-460.8 460.8s206.336 460.8 460.8 460.8 460.8-206.336 460.8-460.8-206.336-460.8-460.8-460.8z m280.064 740.864c-74.24 74.24-175.104 116.224-280.064 115.712-104.96 0-205.824-41.472-280.064-115.712S115.712 616.96 115.712 512s41.472-205.824 116.224-280.064C306.176 157.696 407.04 115.712 512 116.224c104.96 0 205.824 41.472 280.064 116.224 74.24 74.24 116.224 175.104 115.712 280.064 0.512 104.448-41.472 205.312-115.712 279.552z" fill="#ffffff" p-id="6978"></path></svg>',
@@ -140,12 +144,16 @@ var msg = {
 	 *				close:false			//是否显示右上角的关闭按钮，不传默认是true，显示关闭按钮
 	 *				background:'#2e2d3c'	//背景颜色。十六进制颜色编码。不传默认是 '#2e2d3c'
 	 *				opacity:92			//弹出层的透明度，默认是92, 取值0~100，0是不透明，100是全部透明
+	 *				padding:'10px'		//弹出层四周留的空隙，默认是1rem。可传入如 10px 、 1rem 等
 	 *			}
 	 * 		</pre>
 	 * @param showClose 是否显示关闭按钮，默认显示。可传入 false 不显示关闭按钮
 	 * @param top 弹出层显示的区块，距离顶部的距离
 	 */
 	popups:function(attribute){
+		var setLeftPosition = false; //是否设置了距离左侧距离
+		var setTopPosition = false; //是否设置了距离顶部距离
+		
 		if(typeof(attribute) == 'undefined'){
 			attribute = {};
 		}else if(typeof(attribute) == 'string'){
@@ -155,6 +163,14 @@ var msg = {
 		if(attribute == null){
 			attribute = {}
 		}
+		
+		if(attribute.left != null){
+			setLeftPosition = true;
+		}
+		if(attribute.top != null || attribute.bottom != null){
+			setTopPosition = true;
+		}
+		
 		//如果text为空，那么提示一下
 		if(attribute.text == null){
 			attribute.text = '您未设置text的值，所以这里出现提醒文字。您可以这样用: <pre>msg.popups(\'我是提示文字\');</pre>';
@@ -169,7 +185,7 @@ var msg = {
 			attribute.close = true;
 		}
 		if(attribute.top == null){
-			attribute.top = '30%';
+			attribute.top = 'auto';
 		}
 		if(attribute.bottom == null || attribute.bottom.length < 1){
 			attribute.bottom = 'auto';
@@ -189,6 +205,9 @@ var msg = {
 		if(attribute.width == null){
 			attribute.width = '90%';
 		}
+		if(attribute.padding == null){
+			attribute.padding = '1rem';
+		}
 		
 		var div=document.createElement("div");
 		div.id = 'wangmarket_popups';
@@ -196,7 +215,7 @@ var msg = {
 		div.innerHTML = '<div style="position: fixed; top:'+attribute.top+'; bottom:'+attribute.bottom+'; text-align: center;font-size: 1rem;color: #dedede;margin: 0px auto;width: '+attribute.width+';left: '+attribute.left+'; height: '+attribute.height+';">'+
 							'<div style="padding:0.5rem">'+
 								'<div style="width: 100%;background-color: '+attribute.background+';border-radius: 0.3rem;filter: alpha(Opacity='+attribute.opacity+');-moz-opacity: '+(attribute.opacity/100)+';opacity: '+(attribute.opacity/100)+';min-height: 4.8rem; height: 100%;">'+
-									'<div style=" width: 100%; font-size: 1.1rem; box-sizing: border-box; line-height: 1.6rem; color: white; text-align: left; padding: 1rem; overflow-y: auto; height: '+attribute.height+';">'+
+									'<div style=" width: 100%; font-size: 1.1rem; box-sizing: border-box; line-height: 1.6rem; color: white; text-align: left; padding: '+attribute.padding+'; overflow-y: auto; height: '+attribute.height+';">'+
 									attribute.text+
 									'</div>'+
 									(attribute.close? '<div style="top: 0px;position: absolute;right: 0px;background-color: aliceblue;border-radius: 50%;height: 2rem;width: 2rem;" onclick="msg.close();"><svg style="width: 2rem; height:2rem; cursor: pointer;" t="1601801323865" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4482" width="48" height="48"><path d="M512.001 15.678C237.414 15.678 14.82 238.273 14.82 512.86S237.414 1010.04 512 1010.04s497.18-222.593 497.18-497.18S786.589 15.678 512.002 15.678z m213.211 645.937c17.798 17.803 17.798 46.657 0 64.456-17.798 17.797-46.658 17.797-64.456 0L512.001 577.315 363.241 726.07c-17.799 17.797-46.652 17.797-64.45 0-17.804-17.799-17.804-46.653 0-64.456L447.545 512.86 298.79 364.104c-17.803-17.798-17.803-46.657 0-64.455 17.799-17.798 46.652-17.798 64.45 0l148.761 148.755 148.755-148.755c17.798-17.798 46.658-17.798 64.456 0 17.798 17.798 17.798 46.657 0 64.455L576.456 512.86l148.756 148.755z m0 0" fill="'+attribute.background+'" p-id="4483"></path></svg></div>':'')+
@@ -207,6 +226,37 @@ var msg = {
 		//<div style="width: 100%;padding-bottom: 1rem;font-size: 1.1rem;padding-left: 0.3rem;padding-right: 2.0rem;box-sizing: border-box;line-height: 1.2rem;color: white;text-align: right;"> <button style=" border: aliceblue; padding: 0.4rem; padding-left: 1rem; padding-right: 1rem; font-size: 0.8rem; background-color: darkcyan; " onclick="close1();">确定</button> </div>
 		if(document.getElementsByTagName("body") != null && document.getElementsByTagName("body").length > 0){
 			document.getElementsByTagName("body")[0].appendChild(div);
+
+			/** 计算位置，剧中显示 **/
+			
+			//弹窗位置控制元素
+			var msgPositionDom = document.getElementById('wangmarket_popups').firstChild;
+			
+			if(!setLeftPosition){
+				//如果没有设置left，那么设置宽度居中
+				try {
+					var htmlWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;   	//html可见区域宽度
+					var msgWidth = msgPositionDom.clientWidth||msgPositionDom.offsetWidth; //当前弹窗的宽度
+					msgPositionDom.style.left = ((htmlWidth - msgWidth)/2) + 'px';
+				} catch (e) {
+					console.log(e);
+				}
+			}
+			if(!setTopPosition){
+				//如果没有设置top、bottom，那么设置高度居中
+				try {
+					var htmlHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;   	//html可见区域高度
+					var msgHeight = msgPositionDom.clientHeight||msgPositionDom.offsetHeight; //当前弹窗的高度
+					if(msgHeight > htmlHeight){
+						//如果弹窗高度比body还高，那么直接就显示到顶部
+						msgPositionDom.style.top = '20px';
+					}else{
+						msgPositionDom.style.top = ((htmlHeight - msgHeight)/2) + 'px';
+					}
+				} catch (e) {
+					console.log(e);
+				}
+			}
 		}else{
 			alert('提示，body中没有子元素，无法显示 msg.js 的提示');
 		}
