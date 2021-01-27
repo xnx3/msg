@@ -138,6 +138,7 @@ var msg = {
 	 * 		<pre>
 	 * 			{
 	 * 				text:'弹窗的内容',	//弹出窗显示的内容，支持html
+	 * 				url:'https://www.leimingyun.com/index.html' //设置弹出窗口要打开的网址，如果url跟text同时设置，那么优先采用url， text设置将无效
 	 *				top:'30%',			//弹出层距离顶部的距离，不传默认是30%。 可以传入如 30%、 5rem、 10px 等
 	 *				left:'5%',			//弹出层距离浏览器左侧的距离，不传默认是5%
 	 *				height:'100px',		//弹出层显示的高度。不传默认是 auto。 传入如 100px 、 10rem 等。不能使用%百分比。
@@ -171,6 +172,14 @@ var msg = {
 		}
 		if(attribute.top != null || attribute.bottom != null){
 			setTopPosition = true;
+		}
+		
+		if(attribute.url != null){
+			if(attribute.text != null){
+				//友好提醒
+				console.log('友好提醒：您已经设置了 attribute.url ，但是您又设置了 attribute.text ，根据优先级， 将采用 attribute.url ，而 attribute.text 设置无效。 ');
+			}
+			attribute.text = '<iframe src="'+attribute.url+'" frameborder="0" style="width:100%;height:100%; border-radius: 0.3rem;"></iframe>';
 		}
 		
 		//如果text为空，那么提示一下
@@ -210,7 +219,7 @@ var msg = {
 		if(attribute.padding == null){
 			attribute.padding = '1rem';
 		}
-		
+		console.log(attribute);
 		var div=document.createElement("div");
 		div.id = 'wangmarket_popups';
 		div.style = 'position: fixed; z-index: 2147483647; margin: 0px auto; text-align: center; width: 100%; ';
@@ -261,6 +270,7 @@ var msg = {
 			}
 		}else{
 			alert('提示，body中没有子元素，无法显示 msg.js 的提示');
+			return;
 		}
 	}
 }
