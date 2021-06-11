@@ -24,6 +24,24 @@
 <button onclick="msg.success('操作成功', function(){ alert(1); });">成功提示，消失时弹出alert</button>
 <button onclick="msg.failure('操作失败', function(){ alert(1); });">失败提示，消失时弹出alert</button>
 
+<h4>信息确定、取消的 confirm 提示</h4>
+<button onclick="msg_confirm();">确定、取消按钮</button>
+<script>
+function msg_confirm(){
+	msg.confirm({
+		text:'hallo',
+		buttons:{
+			'确认':function(){
+				alert('点了确认');
+			},
+			'取消':function(){
+				msg.info('点了取消');
+			}
+		} 
+	});
+}
+</script>
+
 <h4>弹出层</h4>
 <button onclick="msg.popups('Hallo，是管雷鸣创造了我！');">普通弹出层</button>
 <button onclick="msg.popups({text:'Hallo，是管雷鸣创造了我！',background:'#FF5722',width:'200px', height:'100px'});">自定义宽高背景的弹出层</button>
@@ -94,6 +112,21 @@ msg.popups({
 	opacity:92,			//弹出层的透明度，默认是92, 取值0~100，0是不透明，100是全部透明
 	padding:'3px',		//弹出层四周留的空隙，默认是1rem。可传入如 10px 、 1rem 等
 });
+
+
+//信息确定、取消的confirm提示 （待完善，只是初步增加）
+msg.confirm({
+	text:'hallo',
+	buttons:{
+		'确认':function(){
+			alert('点了确认');
+		},
+		'取消':function(){
+			alert('点了取消');
+		}
+	} 
+});
+
 		</pre>
 	</div>
 	

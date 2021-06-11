@@ -272,5 +272,65 @@ var msg = {
 			alert('提示，body中没有子元素，无法显示 msg.js 的提示');
 			return;
 		}
+	},
+	/**
+	 * 确认弹出提示
+	 * @param attribute 弹出层的其他属性。传入如： 
+	 * 		<pre>
+	 * 			{
+	 * 				text:'弹窗的内容',	//弹出窗显示的内容，支持html
+	 *				width:'17rem',		//弹出层显示的宽度。不传默认是 17rem。传入如 100px 、 17rem 、 50% 等。
+	 *				close:false			//是否显示右上角的关闭按钮，不传默认是false，不显示关闭按钮
+	 *				background:'#2e2d3c'	//背景颜色。十六进制颜色编码。不传默认是 '#2e2d3c'
+	 *				opacity:92,			//弹出层的透明度，默认是92, 取值0~100，0是不透明，100是全部透明
+	 *				padding:'10px',		//弹出层四周留的空隙，默认是1rem。可传入如 10px 、 1rem 等
+	 *				buttons:{
+	 *					'确认':function(){
+	 *						console.log('点击了确认');
+	 *					},
+	 *					'取消':function(){
+	 *						console.log('点击了取消');
+	 *					}
+	 *				}
+	 *			}
+	 * 		</pre>
+	 */
+	confirm:function(attribute){
+		//如果text为空，那么提示一下
+		if(attribute.text == null){
+			attribute.text = '您未设置text的值，所以这里出现提醒文字。您可以这样用: <pre>msg.popups(\'我是提示文字\');</pre>';
+		}else{
+			
+			if(attribute.buttons == null){
+				attribute.text = '您还未设置 buttons 属性';
+			}
+			//统计自定义了几个button
+			var i = 0;
+			for(let key in attribute.buttons){
+				i++;
+			}
+			//取出button来
+			var buttonsHtml = '';	//button显示的html
+			for(let key in attribute.buttons){
+				i--;
+				//新取一个函数名
+				var name = ''+key+'_'+new Date().getTime();
+				window.msg.confirm[name] = function(){ msg.close(); attribute.buttons[key](); };
+				buttonsHtml = buttonsHtml+'<button onclick="window.msg.confirm[\''+name+'\']();" style=" padding-left: 0.6rem; padding-right: 0.6rem; font-size: 1rem;'+(i>0? 'margin-right:0.8rem;':'')+'">'+key+'</button>';
+			}
+			
+			attribute.text = '<div style="line-height: 1.4rem; width:100%; padding-right: 0.2rem;">对方向您发起远程协助邀请，请问您是否同意？<div style=" display: inherit; width: 100%; text-align: right;margin-top: 1rem;">'+buttonsHtml+'</div></div>';
+		}
+		
+		//赋予默认属性
+		if(attribute.close == null){
+			attribute.close = false;
+		}
+		if(attribute.width == null){
+			attribute.width = '17rem';
+		}
+		
+		
+		msg.popups(attribute);
 	}
 }
