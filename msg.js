@@ -219,7 +219,6 @@ var msg = {
 		if(attribute.padding == null){
 			attribute.padding = '1rem';
 		}
-		console.log(attribute);
 		var div=document.createElement("div");
 		div.id = 'wangmarket_popups';
 		div.style = 'position: fixed; z-index: 2147483647; margin: 0px auto; text-align: center; width: 100%; ';
