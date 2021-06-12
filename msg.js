@@ -285,17 +285,31 @@ var msg = {
 	 *				opacity:92,			//弹出层的透明度，默认是92, 取值0~100，0是不透明，100是全部透明
 	 *				padding:'10px',		//弹出层四周留的空隙，默认是1rem。可传入如 10px 、 1rem 等
 	 *				buttons:{
-	 *					'确认':function(){
-	 *						console.log('点击了确认');
+	 *					'确定':function(){
+	 *						console.log('点击了确定');
 	 *					},
 	 *					'取消':function(){
 	 *						console.log('点击了取消');
 	 *					}
-	 *				}
+	 *				},
+	 *				buttonStyle:''		//弹出的confirm右下角的几个按钮的样式，会直接加到 <button style="....这里"（这个属性还没实现）
 	 *			}
 	 * 		</pre>
+	 *  @param okFunc 如果上面attribute使用的是最简单使用方式，attribute传入的是 text显示的内容，那么这里就是点了确定按钮后执行的方法
 	 */
-	confirm:function(attribute){
+	confirm:function(attribute, okFunc){
+		
+		//这里存在一种最简单的弹出方式，直接传入提示内容跟点击确定后执行的方法，所以要在前面判断一下
+		if(typeof(attribute) == 'string'){
+			//attribute 是 confirm弹出的内容
+			
+			attribute = {text:attribute}
+			attribute.buttons = {
+				'确定':okFunc,
+				'取消':function(){}
+			}
+		}
+		
 		//如果text为空，那么提示一下
 		if(attribute.text == null){
 			attribute.text = '您未设置text的值，所以这里出现提醒文字。您可以这样用: <pre>msg.popups(\'我是提示文字\');</pre>';
@@ -319,7 +333,7 @@ var msg = {
 				buttonsHtml = buttonsHtml+'<button onclick="window.msg.confirm[\''+name+'\']();" style=" padding-left: 0.6rem; padding-right: 0.6rem; font-size: 1rem;'+(i>0? 'margin-right:0.8rem;':'')+'">'+key+'</button>';
 			}
 			
-			attribute.text = '<div style="line-height: 1.4rem; width:100%; padding-right: 0.2rem;">对方向您发起远程协助邀请，请问您是否同意？<div style=" display: inherit; width: 100%; text-align: right;margin-top: 1rem;">'+buttonsHtml+'</div></div>';
+			attribute.text = '<div style="line-height: 1.4rem; width:100%; padding-right: 0.2rem;">'+attribute.text+'<div style=" display: inherit; width: 100%; text-align: right;margin-top: 1rem;">'+buttonsHtml+'</div></div>';
 		}
 		
 		//赋予默认属性
@@ -332,5 +346,9 @@ var msg = {
 		
 		
 		msg.popups(attribute);
+	},
+	//替代js原本的alert弹窗
+	alert:function(text){
+		
 	}
 }

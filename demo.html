@@ -9,7 +9,6 @@
 </head>
 <body>
 
-<h2>快速体验</h2>
 <h4>简单的弹出提示</h4>
 <button onclick="msg.info('Hello Msg');">提示信息</button>
 <button onclick="msg.success('操作成功');">成功提示</button>
@@ -25,8 +24,15 @@
 <button onclick="msg.failure('操作失败', function(){ alert(1); });">失败提示，消失时弹出alert</button>
 
 <h4>信息确定、取消的 confirm 提示</h4>
+<button onclick="msg_confirm_simple();">最简单使用</button>
 <button onclick="msg_confirm();">确定、取消按钮</button>
 <script>
+function msg_confirm_simple(){
+	msg.confirm('你真的真的确定你很帅吗？',function(){
+		alert('你点了确定');
+	});
+}
+
 function msg_confirm(){
 	msg.confirm({
 		text:'hallo',
