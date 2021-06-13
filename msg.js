@@ -10,7 +10,7 @@ var msg = {
 	/*
 	 * 当前msg的版本
 	 */
-	version:1.2,
+	version:1.3,
 	/*
 	 * 错误的图
 	 */
@@ -348,8 +348,13 @@ var msg = {
 		
 		msg.popups(attribute);
 	},
-	//替代js原本的alert弹窗
+	//需要确认的弹出提示，替代js原本的alert弹窗
 	alert:function(text){
-		
+		msg.confirm({
+		    text:text,
+		    buttons:{
+		        确定:function(){}
+		    } 
+		});
 	}
 }
