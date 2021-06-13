@@ -150,8 +150,6 @@ var msg = {
 	 *				padding:'10px'		//弹出层四周留的空隙，默认是1rem。可传入如 10px 、 1rem 等
 	 *			}
 	 * 		</pre>
-	 * @param showClose 是否显示关闭按钮，默认显示。可传入 false 不显示关闭按钮
-	 * @param top 弹出层显示的区块，距离顶部的距离
 	 */
 	popups:function(attribute){
 		var setLeftPosition = false; //是否设置了距离左侧距离
@@ -225,7 +223,7 @@ var msg = {
 		div.innerHTML = '<div style="position: fixed; top:'+attribute.top+'; bottom:'+attribute.bottom+'; text-align: center;font-size: 1rem;color: #dedede;margin: 0px auto;width: '+attribute.width+';left: '+attribute.left+'; height: '+attribute.height+';">'+
 							'<div style="padding:0rem">'+
 								'<div style="width: 100%;background-color: '+attribute.background+';border-radius: 0.3rem;filter: alpha(Opacity='+attribute.opacity+');-moz-opacity: '+(attribute.opacity/100)+';opacity: '+(attribute.opacity/100)+';min-height: 4.8rem; height: 100%;">'+
-									'<div style=" width: 100%; font-size: 1.1rem; box-sizing: border-box; line-height: 1rem; color: white; text-align: left; padding: '+attribute.padding+'; overflow-y: auto; height: '+attribute.height+'; display: flex; border-radius: 0.4rem;">'+
+									'<div style=" width: 100%; font-size: 1rem; box-sizing: border-box; line-height: 1.3rem; color: white; text-align: left; padding: '+attribute.padding+'; overflow-y: auto; height: '+attribute.height+'; display: flex; border-radius: 0.4rem;">'+
 									attribute.text+
 									'</div>'+
 									(attribute.close? '<div class="msg_close" style="top: -0.8rem;position: absolute;right: -0.6rem;background-color: aliceblue;border-radius: 50%;height: 2rem;width: 2rem;" onclick="msg.close();"><svg style="width: 2rem; height:2rem; cursor: pointer;" t="1601801323865" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4482" width="48" height="48"><path d="M512.001 15.678C237.414 15.678 14.82 238.273 14.82 512.86S237.414 1010.04 512 1010.04s497.18-222.593 497.18-497.18S786.589 15.678 512.002 15.678z m213.211 645.937c17.798 17.803 17.798 46.657 0 64.456-17.798 17.797-46.658 17.797-64.456 0L512.001 577.315 363.241 726.07c-17.799 17.797-46.652 17.797-64.45 0-17.804-17.799-17.804-46.653 0-64.456L447.545 512.86 298.79 364.104c-17.803-17.798-17.803-46.657 0-64.455 17.799-17.798 46.652-17.798 64.45 0l148.761 148.755 148.755-148.755c17.798-17.798 46.658-17.798 64.456 0 17.798 17.798 17.798 46.657 0 64.455L576.456 512.86l148.756 148.755z m0 0" fill="'+attribute.background+'" p-id="4483"></path></svg></div>':'')+
@@ -291,7 +289,7 @@ var msg = {
 	 *						console.log('点击了取消');
 	 *					}
 	 *				},
-	 *				buttonStyle:''		//弹出的confirm右下角的几个按钮的样式，会直接加到 <button style="....这里"（这个属性还没实现）
+	 *				buttonStyle:'padding-left:0.6rem; padding-right:0.6rem; font-size: 0.9rem;'		//弹出的confirm右下角的几个按钮的样式，会直接加到 <button style="....这里"  不传入默认则是padding-left:0.6rem; padding-right:0.6rem; font-size: 0.9rem;  
 	 *			}
 	 * 		</pre>
 	 *  @param okFunc 如果上面attribute使用的是最简单使用方式，attribute传入的是 text显示的内容，那么这里就是点了确定按钮后执行的方法
@@ -307,6 +305,10 @@ var msg = {
 				'确定':okFunc,
 				'取消':function(){}
 			}
+		}
+		
+		if(attribute.buttonStyle == null){
+			attribute.buttonStyle = 'padding-left:0.6rem; padding-right:0.6rem; font-size: 0.9rem;';
 		}
 		
 		//如果text为空，那么提示一下
@@ -329,7 +331,7 @@ var msg = {
 				//新取一个函数名
 				var name = ''+key+'_'+new Date().getTime();
 				window.msg.confirm[name] = function(){ msg.close(); attribute.buttons[key](); };
-				buttonsHtml = buttonsHtml+'<button onclick="window.msg.confirm[\''+name+'\']();" style=" padding-left: 0.6rem; padding-right: 0.6rem; font-size: 1rem;'+(i>0? 'margin-right:0.8rem;':'')+'">'+key+'</button>';
+				buttonsHtml = buttonsHtml+'<button onclick="window.msg.confirm[\''+name+'\']();" style="'+attribute.buttonStyle+'">'+key+'</button>'+(i>0? '&nbsp;&nbsp;':'');
 			}
 			
 			attribute.text = '<div style="line-height: 1.4rem; width:100%; padding-right: 0.2rem;">'+attribute.text+'<div style=" display: inherit; width: 100%; text-align: right;margin-top: 1rem;">'+buttonsHtml+'</div></div>';

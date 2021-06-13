@@ -9,6 +9,36 @@
 </head>
 <body>
 
+<h2>效果图</h2>
+
+<div>
+	<div id="shili">
+		<div>
+			<img src="https://res.weiunity.com/msg/images/info.png" />
+		</div>
+		<div>
+			<img src="https://res.weiunity.com/msg/images/success.png" />
+		</div>
+		<div>
+			<img src="https://res.weiunity.com/msg/images/failure.png" />
+		</div>
+		<div>
+			<img src="https://res.weiunity.com/msg/images/loading.gif" />
+		</div>
+		<div style="clear: both;"></div>
+	</div>
+	<div id="shili">
+		<div>
+			<img src="https://res.weiunity.com/msg/images/confirm_simple.png" />
+		</div>
+		<div>
+			<img src="https://res.weiunity.com/msg/images/confirm_button.png" />
+		</div>
+		<div style="clear: both;"></div>
+	</div>
+</div>
+<div style="clear: both;"></div>
+
 <h4>简单的弹出提示</h4>
 <button onclick="msg.info('Hello Msg');">提示信息</button>
 <button onclick="msg.success('操作成功');">成功提示</button>
@@ -25,7 +55,7 @@
 
 <h4>信息确定、取消的 confirm 提示</h4>
 <button onclick="msg_confirm_simple();">最简单使用</button>
-<button onclick="msg_confirm();">确定、取消按钮</button>
+<button onclick="msg_confirm();">自定义按钮</button>
 <script>
 function msg_confirm_simple(){
 	msg.confirm('你真的真的确定你很帅吗？',function(){
@@ -35,13 +65,16 @@ function msg_confirm_simple(){
 
 function msg_confirm(){
 	msg.confirm({
-		text:'hallo',
+		text:'这里演示自定义按钮数量、触发效果。',
 		buttons:{
-			'确认':function(){
-				alert('点了确认');
+			按钮1:function(){
+				alert('点了按钮一');
 			},
-			'取消':function(){
-				msg.info('点了取消');
+			按钮2:function(){
+				msg.info('点了按钮二');
+			},
+			按钮3:function(){
+				msg.info('点了按钮三');
 			}
 		} 
 	});
